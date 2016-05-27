@@ -1,0 +1,12 @@
+          let-mutable secnum <- 0
+          let-mutable reflist <- []
+          let \section head body =
+            secnum <- (! secnum) + 1 before
+            ( if-id-is-valid new-global-hash id <<- arabic (! secnum) else () ) before
+            ( let numstr = (arabic (! secnum)) in {
+              <h1>@numstr;. @head;</h1>\deeper{
+                @body;
+              }<!-- -->
+            } )
+
+          let \ref key = !! key

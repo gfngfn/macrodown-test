@@ -1,0 +1,14 @@
+
+let pyramid num = pyramid-sub num (num * 2 + 1)
+
+and pyramid-sub num wid =
+  if num == 0 then {} else
+    let uss = underscores num in
+    let nbs = numbersigns (wid - num * 2) in
+      {@uss;@nbs;@uss;\break;} ^ (pyramid-sub (num - 1) wid)
+      
+and underscores num = if num <= 0 then {} else {_} ^ (underscores (num - 1))
+
+and numbersigns num = if num <= 0 then {} else {\#} ^ (numbersigns (num - 1))
+
+in pyramid 15

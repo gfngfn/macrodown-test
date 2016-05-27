@@ -1,0 +1,16 @@
+let foldl f i l =
+  if is-empty l then i else
+    foldl f (f i (list-head l)) (list-tail l)
+in
+let foldr f l i =
+  if is-empty l then i else
+    f (list-head l) (foldr f (list-tail l) i)
+in
+let range min max =
+  if min >= max then [min] else min :: (range (min + 1) max)
+in
+let suml = foldl (+) 0 in
+let sumr lst = foldr (+) lst 0 in
+let concat = foldl (^) {} in
+let \program p = p in
+  finish

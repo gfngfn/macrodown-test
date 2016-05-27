@@ -1,0 +1,5 @@
+let f : int list -> string
+      | []         = 0
+      | (hd :: tl) = hd
+
+in f

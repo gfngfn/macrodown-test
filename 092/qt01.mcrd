@@ -1,0 +1,13 @@
+\macro \latex @code {<code class="latex">@code;</code>}%
+\macro \latex-display @code {<pre>@code;</pre>}%
+\latex`\expandafter` is awesome.
+\latex``\catcode`\@=11`` is very useful.
+\latex-display`
+  \documentclass{jsarticle}
+  \makeatletter
+    \def\fst#1#2{#1}
+  \makeatother
+  \begin{document}
+    \indent\fst{hoge}{piyo}\par
+  \end{document}
+`

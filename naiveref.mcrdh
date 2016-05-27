@@ -1,0 +1,18 @@
+          let-mutable secnum <- 0
+          let-mutable reflist <- []
+          let \section head body =
+            secnum <- (! secnum) + 1 before
+            ( if-id-is-valid reflist <- (id, (! secnum)) :: (! reflist) else () ) before
+            ( let numstr = (arabic (! secnum)) in {
+              <h1>@numstr;. @head;</h1>\deeper{
+                @body;
+              }<!-- -->
+            } )
+
+          let find lst key =
+            match lst with
+            | []                             -> {??}
+            | (k, v) :: tail when same k key -> arabic v
+            | _ :: tail                      -> find tail key
+          
+          let \ref key = find (! reflist) key

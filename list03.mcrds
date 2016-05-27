@@ -1,0 +1,13 @@
+let \print-list = print-list
+and print-list lst =
+  match lst with
+  | []       -> {}
+  | hd :: [] -> hd
+  | hd :: tl -> hd ^ {/} ^ (print-list tl)
+
+let list-length lst =
+  match lst with
+  | []      -> 0
+  | _ :: tl -> 1 + (list-length tl)
+
+in {\print-list{|hoge|piyo|fuga|moge|}}

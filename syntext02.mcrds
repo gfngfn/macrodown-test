@@ -1,0 +1,4 @@
+let foldl f i []         = i
+        | f i (hd :: tl) = foldl f (f i hd) tl
+in
+  foldl (^) `*` {|hoge|piyo|fuga|moge|}

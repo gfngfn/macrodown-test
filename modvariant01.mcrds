@@ -1,0 +1,19 @@
+variant moge = Int of int | Bool of bool
+
+module Hoge = struct
+  public  variant 'a piyo = Foo of 'a | Bar of string
+  private variant 'a fuga = Baz of 'a | Bax of string
+  
+  public let show (Foo i) = arabic i
+                | (Bar s) = s
+
+  public let foo = Foo 42
+
+  public let bar = Bar `sample`
+
+end-struct
+
+type subpiyo = int Hoge.piyo
+
+in
+  Hoge.show Hoge.foo ^ `/` ^ Hoge.show Hoge.bar

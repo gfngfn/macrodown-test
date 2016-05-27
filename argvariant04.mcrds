@@ -1,0 +1,34 @@
+module Tree = struct
+  public variant 'a tree = Leaf of 'a leaf | Node of 'a node
+             and 'a leaf = 'a
+             and 'a node = 'a * 'a tree * 'a tree
+
+  public let top tr =
+    match tr with
+    | Leaf x         -> x
+    | Node (x, _, _) -> x
+
+  public let leftmost tr =
+    match tr with
+    | Leaf x          -> x
+    | Node (_, lc, _) -> leftmost lc
+
+  public let leaf x = Leaf x
+
+  public let node x lc rc = Node (x, lc, rc)
+
+  public let show to-str tr =
+    match tr with
+    | Leaf x           -> to-str x
+    | Node (x, lc, rc) ->
+        let xs  = to-str x in
+        let lcs = show to-str lc in
+        let rcs = show to-str rc in
+          {(@lcs; @xs; @rcs;)}
+
+end-struct
+
+in
+  %let tr = Tree.node 3 (Tree.leaf 1) (Tree.node 4 (Tree.leaf `a`) (Tree.leaf 5)) in
+  let tr = Tree.node 3 (Tree.leaf 1) (Tree.leaf {a}) in
+    Tree.show arabic tr

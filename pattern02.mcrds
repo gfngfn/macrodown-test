@@ -1,0 +1,6 @@
+let f p =
+  match p with
+  | (x, _) when x >= 0 -> x
+  | (_, y)             -> y
+
+in (arabic (f (3, 10))) ^ `/` ^ (arabic (f (-4, 12)))

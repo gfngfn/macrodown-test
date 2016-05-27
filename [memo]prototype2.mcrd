@@ -1,0 +1,84 @@
+macro \enclose-each @left @right @list =
+  if is-empty {@list;} then
+    {}
+  else
+    pop @head @tail {@list;} in
+      {@left;@head;@right;%
+        \enclose-each{@left;}{@right;}{@tail;}}
+
+func count-char-sub num : int @str @char =
+  if same {@str;} {} then
+    num
+  else
+    pop-char @hdch @tlstr {@str;} in
+      if same {@hdch;} {@char;} then
+        count-char-sub (num + 1) {@tlstr;} {@char;}
+      else
+        count-char-sub num {@tlstr;} {@char;}
+
+macro \split-by-char @str @char = {\split-by-char-sub(0)(0){}{@str;}{@char;}}
+macro \split-by-char-sub start stop @constrlst @str @char =
+  if start >= (length {@constrlst;}) then
+    {@constrlst;}
+  else
+    pop-char @head @tail {@str;} in
+      if same {@head;} {@char;} then
+        {
+          \split-by-char-sub(stop)(stop){
+            \string-sub(start)(stop + 1){@str;}|@constrlst;
+          }{@str;}{@char;}
+        }
+      else
+        {
+          \split-by-char-sub()
+        }
+% ---- ---- ---- ----
+func count_char_sub num @str @char =
+  if same {@str;} {} then
+    num
+  else
+    pop-char @head @tail {@str;} in
+      if same {@head;} {@char;} then
+        count_char_sub (num + 1) {@tail;} {@char;}
+      else
+        count_char_sub num {@tail;} {@char;}
+
+func count_char @str @char = count_char_sub 0 {@str;} {@char;}
+% ---- ---- ---- ----
+func odd @lst =
+  pop @hd @tl {@lst;} in
+    {<div class="odd">@hd;</div>} ^ (even {@tl;})
+also even @lst =
+  pop @hd @tl {@lst;} in
+    {<div class="even">@hd;</div>} ^ (odd {@tl;})
+
+macro \deco-list @lst = odd {@lst;}
+% ---- ---- ---- ----
+macro \p @content = 
+  if_valid @class then
+    if_valid @id then
+      {<p id="@id;">\deeper{@content;}</p>}
+    else
+      {<p>\deeper{@content;}</p>}
+  else
+    if_valid @id then
+      {p class="@class;" id="@id;"}
+
+document {
+  \p .centered {
+    Lorem ipsum dolor sit amet.
+  }
+  \p #sample-text {
+    The quick brown fox jumps over the lazy dog.
+  }
+}
+% ---- ---- ---- ----
+func new_span_class seq @class =
+  global_macro seq @content = {<span class="@class;">@content;</span>}
+
+new_span_class \newword {newword}
+
+document {
+  we call a relation $R$ on $S$ an \newword{equivalence relation}
+  if and only if $R$ is reflexive, symmetric and transitive.
+}

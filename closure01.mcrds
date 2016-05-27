@@ -1,0 +1,10 @@
+let-mutable f <- (function u -> 0)
+let-mutable g <- (function u -> 0)
+let foo u =
+  let-mutable x <- 0 in
+    f <- (function u -> (x <- !x + 1 before !x)) before
+    g <- (function u -> (x <- !x - 1 before !x)) before
+    x <- 1 before
+    arabic ((!f) ())
+
+in (foo ()) ^ (arabic ((!f) ())) ^ (arabic ((!g) ())) ^ (foo ())

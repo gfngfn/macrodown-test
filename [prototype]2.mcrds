@@ -1,0 +1,13 @@
+let separate : string list -> string
+  | separate []       = {}
+  | separate [s]      = s
+  | separate hd :: tl = hd ^ {,\ } ^ (separate tl)
+
+let foldl f i []         = i
+  | foldl f i (hd :: tl) = foldl f (f hd i) tl
+
+let foldl f i []         = i
+        | f i (hd :: tl) = foldl f (f hd i) tl
+
+let foldl f i | []         = i
+              | (hd :: tl) = foldl f (f hd i) tl

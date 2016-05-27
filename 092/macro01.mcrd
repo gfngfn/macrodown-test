@@ -1,0 +1,9 @@
+\macro \outer @va {%
+  \macro \inner @vb {%
+    (@va;, @vb;)%
+  }%
+  \inner{piyo}%
+}%
+\outer{hoge}%
+\macro \inner @vc {[@vc;]}%
+\inner{fuga}%

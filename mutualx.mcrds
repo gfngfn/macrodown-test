@@ -1,0 +1,6 @@
+let deeper s = {\deeper{@s;}}
+
+let \itemize x = itemize-sub x
+and itemize-sub itmz = itmz
+
+in {\itemize{a}}

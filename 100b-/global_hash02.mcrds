@@ -1,0 +1,9 @@
+let \ref ref = !! ref in
+( declare-global-hash {foo} <<- {hoge} before
+  declare-global-hash {bar} <<- (!! {foo}) ^ {piyo} before
+  {(\ref{foo}/\ref{bar})}
+    ^ {[} ^ (string-sub {(\ref{foo}/\ref{bar})} 0 (string-length {(\ref{foo}/\ref{bar})})) ^ {]}
+    ^ (renew {foo} <<- {fuga} before
+        {(\ref{foo}/\ref{bar})}
+      )
+)

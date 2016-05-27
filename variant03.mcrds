@@ -1,0 +1,6 @@
+let display x =
+  match x with
+  | Some i  -> arabic i
+  | None () -> `none`
+in
+  display (Some 3)

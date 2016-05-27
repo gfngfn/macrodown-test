@@ -1,0 +1,7 @@
+\macro-with-id \account @account {%
+  <div>@account;</div>%
+}{%
+  <div id="@id;">@account;</div>%
+}%
+\account #kangaete {o_desu4}
+\account {gfn_me}

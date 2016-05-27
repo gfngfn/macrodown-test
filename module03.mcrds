@@ -1,0 +1,7 @@
+module Counter = struct
+  private let-mutable counter <- 0
+  direct let-lazy \count =
+    counter <- (! counter) + 1 before arabic (! counter)
+end-struct
+
+in {\count;/\count;/\count;}

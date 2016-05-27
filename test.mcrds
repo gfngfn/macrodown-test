@@ -1,0 +1,2 @@
+let \twitter at-id = {<span class="twitter">\@@at-id;</span>} in
+  {\twitter{phidnight}}

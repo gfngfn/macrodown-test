@@ -1,0 +1,8 @@
+let foldl f i lst =
+  match lst with
+  | []       -> i
+  | hd :: tl -> foldl f (f i hd) tl
+
+let sum = foldl (+) 0
+
+in arabic ( sum [3; 1; 4; 1; 5; 9; 2] )

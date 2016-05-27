@@ -1,0 +1,6 @@
+let-mutable f <- (function u -> {})
+let init u =
+  let-mutable x <- 0 in
+    f <- (function u -> (x <- !x + 1 before arabic (!x)))
+
+in init () before ((!f) ()) ^ ((!f) ()) ^ ((!f) ())

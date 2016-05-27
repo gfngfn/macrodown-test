@@ -1,0 +1,5 @@
+let \fizzbuzzes n =
+  if n <= 0 then {} else {\fizzbuzzes(n - 1);} ^ (fizzbuzz n)
+  ^ (if n mod 10 == 0 then {\break;} else {\space;})
+in
+  finish

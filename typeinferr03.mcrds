@@ -1,0 +1,8 @@
+
+let foldl f i lst =
+  if is-empty lst then i else
+    foldl f (f i (list-head lst)) (list-tail lst)
+
+let id x = x
+
+let hoge = foldl id

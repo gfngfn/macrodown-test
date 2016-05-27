@@ -1,0 +1,3 @@
+variant 'lt 'nt tree = Leaf of 'lt | Node of 'nt * 'lt 'nt tree * 'lt 'nt tree
+
+in Node (true, Leaf 1, Node (false, Leaf 2, Leaf 3))

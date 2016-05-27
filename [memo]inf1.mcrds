@@ -1,0 +1,7 @@
+
+let f x y = x y in f f
+ : (a -> b) -> a -> b
+
+(\x:(a -> b). \y:a. x y) (\x:(c -> d). \y:c. x y)
+--> (\Y:c. (\x:(a -> b). \y:a. x y) Y)
+--> (\Y:(a -> b). (\y:a. Y y))

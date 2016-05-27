@@ -1,0 +1,7 @@
+\macro \plural @left @right @list {%
+  \pop @head @tail {@list;}{%
+    @left;@head;@right;%
+    \plural{@left;}{@right;}{@tail;}%
+  }%
+}%
+\plural{[}{]}{bd|gfn|pqrs}

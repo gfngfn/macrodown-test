@@ -1,0 +1,3 @@
+\macro-with-id \test {A}{B(@id;)}%
+1.\test;
+2.\test#gfn;

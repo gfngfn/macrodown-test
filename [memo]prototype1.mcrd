@@ -1,0 +1,216 @@
+% ---- ---- ---- ---- ---- ---- ---- ----
+% overloading system by punctuation sequence
+\punct \in;
+\macro \write @text \in @file {...}
+\macro \write \in @file @text {\write{@text;}\in{@file;}}
+\write{Hello World}\in{test1.txt}
+\write\in{test2.txt}{Bye, World}
+% ---- ---- ---- ---- ---- ---- ---- ----
+% integer type
+\macro \repeat $num : int @text {
+  \if ($num <= 0) {}{@text;\repeat($num - 1){@text;}}
+}
+\func 'fct $num : int (
+  'if($num <= 1)(
+    1
+  )(
+    $num * 'fct($num - 1)
+  )
+)
+\func fct num : int (
+  if num <= 1
+    then 1
+    else num * fct (num - 1)
+)
+% ---- ---- ---- ---- ---- ---- ---- ----
+% indented block syntax
+  !section #blksynt
+    The Suggestion of Block Syntax
+  !p
+    The quick brown fox
+    jumps over the lazy dog.
+  !p
+    see \ref #blksynt;.
+
+% ---- ---- ---- ---- ---- ---- ---- ----
+% indented block syntax
+  !section.
+    The Suggestion of Block Syntax
+  !p.
+    The quick brown fox
+    jumps over the lazy dog.
+  !p see \ref #blksynt;.
+% ---- ---- ---- ---- ---- ---- ---- ----
+% indented block syntax
+\document{
+  %(preamble)
+}{
+  !#sec1======== Section ========
+    !!==== First Sub Section ====
+    \p{
+      The quick brown fox
+      jumps over the lazy dog.
+    }
+
+    !!==== Second Sub Section ====
+      !!!== Land of Lisp ==
+      \p{
+        Lorem ipsum dolor sit amet.
+      }
+
+      !!!== Let over Lambda ==
+      \p{
+        Lorem ipsum dolor sit amet.
+      }
+
+  !======== Sample List ========
+  \p{
+    The University of Tokyo has canpuses suggested below:
+    \list{
+      * TOKYO
+        ** Hongo
+        ** Yayoi
+        ** Asano
+        ** Komaba
+          *** Komaba I
+          *** Komaba II
+      * CHIBA
+        ** Kashiwa
+    }
+    Kashiwa is too far to visit.
+  }
+}
+% ---- ---- ---- ---- ---- ---- ---- ----
+% simplified list syntax
+\name-space{
+  \macro \ol @layer : layer {<ol>\deeper{\--ol{@layer;}}</ol>}
+}{
+  \macro \--ol @layer : layer {
+    \pop-layer @top @children @tail {@layer;}{
+      <li>@top;
+      \if-empty-layer{@children;}\then{}\else{\break;\deeper{\ol{@children;}}}
+      </li>\break;
+      \if-empty-layer{@tail;}\then{}\else{\--ol{@tail;}}
+    }
+  }
+}
+% ---- ----
+\ol{
+  * Tokyo
+    ** Hongo
+    ** Komaba
+  * Chiba
+    ** Kashiwa
+}
+% ---- ---- ---- ---- ---- ---- ---- ----
+% math system
+  \math-ord \c0 {c_0}
+  \math-func f {f}
+  \macro \defeq {\\mathrel{:=}}
+  \math-rel := {\defeq}
+  \math{
+    f(x) := (g(x) + h(x)) / 2
+  }
+% ---- ---- ---- ---- ---- ---- ---- ----
+  \math-rel {\:= : }
+  \math-func {f|g|h}
+  Let `\funcdoms{f}{\setR}{\setR}` be a continuous function defined by
+  ~math
+    f(x) := (g(x) + h(x)) / 2
+  ~/
+  where `g`, `h` are ones.
+% ---- ---- ---- ---- ---- ---- ---- ----
+
+
+
+% ---- ---- ---- ---- ---- ---- ---- ----
+% literal block `~`
+  \latex`\expandafter` is awesome.
+  \latex``\catcode`\@=11`` is very useful.
+  \latex-display{hoge.tex}
+  ````
+    \documentclass{jsarticle}
+    \begin{document}
+    \end{document}
+  ````
+% ---- ---- ---- ---- ---- ---- ---- ----
+% literal block `~`
+  \cpp`constexpr` is awesome.
+  \tex`` Please type a command or say `\end' ``.
+  \ccode{hello_world.c}
+  ````
+    #include <stdio.h>
+    #define EXIT_SUCCESS 0
+
+    int main () {
+      printf("Hello World!\n");
+      return EXIT_SUCCESS;
+    }
+  ````
+% ---- ---- ---- ---- ---- ---- ---- ----
+  \p{
+    The University of Tokyo has many canpuses as follows:
+    \list{
+      * TOKYO
+        ** Hongo
+        ** Yayoi
+        ** Asano
+        ** Komaba
+          *** Komaba I
+          *** Komaba II
+      * CHIBA
+        ** Kashiwa
+    }
+    Kashiwa is too far to visit.
+  }
+% ---- ---- ---- ---- ---- ---- ---- ----
+\func fact n = (
+  if n <= 0
+    then 1
+    else n * fact (n - 1)
+);
+\func str-length @str = (
+  if is-empty {@str;}
+    then 0
+    else 1 + str-length (str-cdr {@str;})
+);
+% ---- ---- ---- ---- ---- ---- ---- ----
+\val func fact n =
+  if n <= 0
+    then 1
+    else n * fact (n - 1)
+;;
+\val func str-length @str =
+  if is-empty {@str;}
+    then 0
+    else 1 + str-length (str-cdr {@str;})
+;;
+% ---- ---- ---- ---- ---- ---- ---- ----
+% tuple separated by colon
+\description{
+  Date: 2015/05/01
+| Place: Hongo }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

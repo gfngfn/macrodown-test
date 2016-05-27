@@ -1,0 +1,3 @@
+\program(arabic (suml (range 1 10)));
+\program(arabic (sumr (range 1 10)));
+%\program(suml (range 1 10));

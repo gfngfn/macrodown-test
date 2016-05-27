@@ -1,0 +1,1 @@
+variant int-option = None of unit | Some of int

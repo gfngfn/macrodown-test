@@ -1,0 +1,18 @@
+let \section head body = {<h1>@head;</h1>\deeper{@body;}}
+
+let \itemize x =
+  match x with
+  | Item(_, itmzlst) -> itemize-main itmzlst
+
+and itemize-sub itmz =
+  match itmz with
+  | Item(text, [])  -> {<li>@text;</li>@soft-break;}
+  | Item(text, itmzlst) -> {<li>@text;\deeper(itemize-main itmzlst);</li>@soft-break;}
+
+and itemize-main itmzlst =
+  {<ul>\deeper(itemize-list itmzlst);</ul>}
+
+and itemize-list itmzlst =
+  match itmzlst with
+  | []                  -> {}
+  | hditmz :: tlitmzlst -> (itemize-sub hditmz) ^ (itemize-list tlitmzlst)

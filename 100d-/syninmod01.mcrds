@@ -1,0 +1,32 @@
+module Stack = struct
+  publ type 'a t = 'a list
+
+  publ let empty : int t = []
+
+  publ let push : int t -> int -> int t
+              | stk x = x :: stk
+
+  publ let pop : int t -> (int * int t)
+             | []         = (0, [])
+             | (hd :: tl) = (hd, tl)
+
+  priv let show-sub []         = {}
+                  | (hd :: []) = arabic hd
+                  | (hd :: tl) = (arabic hd) ^ space ^ (show-sub tl)
+
+  publ let show : int t -> string
+              | stk = let inner = show-sub stk in {[@inner;]}
+
+end-struct
+
+let s0 = Stack.empty in
+  (Stack.show s0) ^
+  ( let s1 = Stack.push s0 3 in
+      (Stack.show s1) ^
+      ( let s2 = Stack.push s1 1 in
+        (Stack.show s2) ^
+        ( let s3 = Stack.push s2 4 in
+          (Stack.show s3)
+        )
+      )
+  )

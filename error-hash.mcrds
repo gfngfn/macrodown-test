@@ -1,0 +1,2 @@
+          let r = !! `mcrd` in
+            (string-sub r 0 3) ^ {/} ^ (new-global-hash `mcrd` <<- {Macrodown} before !! `mcrd`)

@@ -1,0 +1,12 @@
+\macro \p @p {
+  p\deeper{@p;}q
+}%
+\p{
+  \p{
+    a
+    b
+    c
+  }
+  d
+  e
+}

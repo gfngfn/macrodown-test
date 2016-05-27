@@ -1,0 +1,16 @@
+\macro \p @p {
+  <p>\deeper{@p;}</p>
+}%
+\macro \enum @lst {
+  \pop @hd @tl {@lst;}{
+    <span>@hd;</span>\ifempty{@tl;}{}{\break;\enum{@tl;}}
+  }
+}%
+\p{R}
+\p{
+  \p{
+    \enum{alpha|beta|gamma|delta
+      |epsilon|zeta|
+        eta|theta}
+  }
+}

@@ -1,0 +1,5 @@
+let repeat n s = if n <= 0
+                   then {}
+                   else s ^ (repeat (n - 1) s) in
+let sum-str m n = {\arabic(m + n);} in
+  repeat 3 (sum-str 2 5)

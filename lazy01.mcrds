@@ -1,0 +1,4 @@
+let-mutable counter <- 0
+let-lazy count = counter <- (! counter) + 1 before (! counter)
+
+in (arabic count) ^ `/` ^ (arabic count) ^ `/` ^ (arabic count)

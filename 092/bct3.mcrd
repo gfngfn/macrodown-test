@@ -1,0 +1,49 @@
+% written by zr_tex8r
+% downloaded from https://gist.github.com/zr-tex8r/dca16ae859a05b7959a6
+\macro \cons @hd @tl {
+  \ifempty{@tl;}{@hd;}{\ifempty{@hd;}{@tl;}{@hd;|@tl;}}}%
+\macro \same @x @y {
+  \ifsame{@x;}{@y;}{*}{}}%
+\macro \cat-list @lst {
+  \pop @hd @tl {@lst;}{
+    @hd;\ifempty{@tl;}{}{\cat-list{@tl;}}}}%
+\macro \countdown @tmr {
+  \pop @hd @tl {@tmr;}{
+    \ifsame{@hd;}{*}{*}{@tl;}}}%
+%\macro \dump-timer @tmr {
+%  \pop @hd @tl {@tmr;}{
+%    \ifsame{@hd;}{*}{*}{.\dump-timer{@tl;}}}}%
+%\macro \bct-dump @stt @prg @dat @tmr @phd @dhd {
+%  DUMP\{@stt;\}\{\cat-list{@prg;}\}\{\cat-list{@dat;}\}%
+%  \{\dump-timer{@tmr;}\}\{@phd;\}\{@dhd;\}}%
+\macro \bct-loop @stt @prg @dat @tmr @phd @dhd {
+  %\bct-dump{@stt;}{@prg;}{@dat;}{@tmr;}{@phd;}{@dhd;}
+  \ifempty{\same{@stt;}{A}}{}{
+    \ifempty{@dat;}{}{
+      \ifempty{@tmr;}{}{
+        \bct-loop{B}{@prg;}{@dat;}{\countdown{@tmr;}}{}{}}}}%
+  \ifempty{\same{@stt;}{B}}{}{
+    \pop @phd1 @ptl1 {@prg;}{
+      \pop @dhd1 @dtl1 {@dat;}{
+        \bct-loop{C}{\cons{@ptl1;}{@phd1;}}{@dtl1;}{@tmr;}{@phd1;}{@dhd1;}}}}%
+  \ifempty{\same{@stt;}{C}}{}{
+    \ifempty{\same{@phd;}{0}}{}{
+      \bct-loop{E}{@prg;}{@dat;}{@tmr;}{}{}}%
+    \ifempty{\same{@phd;}{1}}{}{
+      \pop @phd1 @ptl1 {@prg;}{
+        \bct-loop{D}{\cons{@ptl1;}{@phd1;}}{\cons{@dhd;}{@dat;}}
+            {@tmr;}{@phd1;}{@dhd;}}}}%
+  \ifempty{\same{@stt;}{D}}{}{
+    \bct-loop{E}{@prg;}%
+        {\ifsame{@dhd;}{1}{@dat;|@phd;}{@dat;}}{@tmr;}{}{}}%
+  \ifempty{\same{@stt;}{E}}{}{
+    \cat-list{@dat;}
+    \bct-loop{A}{@prg;}{@dat;}{@tmr;}{}{}}}%
+\macro \bct @prg @dat @tmr {
+  \bct-loop{A}{@prg;}{@dat;}
+      {\ifempty{@prg;}{}{\ifempty{@tmr;}{*}{@tmr;}}}{}{}}%
+%-------------------------------------------------
+% Run BCT with program=00111, data=101, up to 12 steps
+\bct{0|0|1|1|1}{1|0|1}{||||||||||||}%
+% Run BCT with program=0, data=11, until halt
+%\bct{0}{1|1}{}%

@@ -1,0 +1,1 @@
+let enclose s = {[@s;]} in enclose (!! {key0})

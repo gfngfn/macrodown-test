@@ -1,0 +1,6 @@
+\macro \separate @str {
+  \pop-char @hdch @tlstr {@str;}{
+    [@hdch;]\separate{@tlstr;}
+  }
+}%
+\separate{bd_gfngfn}

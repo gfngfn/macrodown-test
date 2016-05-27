@@ -1,0 +1,48 @@
+let-$ sum =
+  match (subscript, superscript) with
+  | (None, None)         -> {\\sum\ }
+  | (Just sub, None)     -> let substr = -$ sub in {\\sum_\{@substr;\}}
+  | (None, Just sup)     -> let supstr = -$ sup in {\\sum^\{@supstr;\}}
+  | (Just sub, just sup) -> let substr = -$ sub
+                            and supstr = -$ sup in {\\sum_\{@substr;\}^\{@supstr;\}}
+
+let-$ frac a b = let astr = -$ a
+                 and bstr = -$ b in {\\frac\{@astr;\}\{@bstr;\}}
+
+let-$ Omega = `\Omega` ^ space
+let-$ famB  = `\mathcal{B}`
+let-$ Prob  = `\mathrm{P}`
+let-$ setN+ = `\mathbf{N}^{+}`
+let-$ setR  = `\mathbf{R}`
+
+let-bin-$ {obj |: prop} level 1 =
+  let objstr -$ obj
+  and propstr -$ prop in {\\setprnsep{@objstr;}{@propstr;}}
+
+let-$ forall pre prop =
+  match pre with
+  | MathNode(nodename, [lst; set]) ->
+      let lststr  = string-of-forall-list lst in
+      let setstr  = -$ set in
+      let propstr = -$ prop in
+        {@lststr; \\in @setstr;. @propstr;}
+
+in {
+  \defpar{Probability space}{
+    Let ${(Omega, famB)} be a mesurable space. Assume ${Prob in famB -> setR} satisfies the following conditions:
+    \display ${|
+      forall {A subseteq Omega} {0 <= Prob@{A} <= 1}
+    |
+      Prob@{Omega} = 1
+    |
+      forall {A_dummysub in setN+ -> famB} {
+        forall {{k | l} in setN+} {
+          {k != l ==> A_k cap A_l = emptyset}
+        ==>
+          Prob@{bigcup {A_k |: k in setN+}} = sum_{k = 1}^{infty} Prob@{A_k}
+        }
+      }
+    |}
+    Then ${(Omega, famB, Prob)} is called a \newword{probability space}.
+  }
+}

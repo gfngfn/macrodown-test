@@ -1,0 +1,11 @@
+let
+| foldl f i []         = i
+| foldl f i (hd :: tl) = foldl (f i hd) tl
+
+let
+| odd []         = `*`
+| odd (hd :: tl) = {(@hd;)} ^ (even tl)
+and
+| even []         = `+`
+| even (hd :: tl) = {[@hd;]} ^ (odd tl)
+

@@ -1,0 +1,11 @@
+let \display s = s in {
+  \display```
+    #include <stdio.h>
+    #define EXIT_SUCCESS 0
+
+    int main() {
+      printf("Hello Macrodown!\n");
+      return EXIT_SUCCESS;
+    }
+  ```
+}

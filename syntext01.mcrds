@@ -1,0 +1,1 @@
+let concat-head s (hd :: tl) = s ^ hd in concat-head {a} {|hoge|piyo|fuga|moge|}

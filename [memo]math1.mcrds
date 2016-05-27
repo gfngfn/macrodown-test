@@ -1,0 +1,25 @@
+  ---- ---- ---- ----
+    E = m c^2
+    F = G $frac{M m}{R^2}
+    d@(x, y) def= &sqrt{x^2 + y^2}
+    f@x def= x^2 + 2 x - 1
+    F@x def= int_{-infty}^{x} f@x ordd x
+    sum_{i = 1}^{n} &frac{1}{n^2} = pi / 6
+    &forallin{A}{famF setmns &set{emptyset}}{&existsin{x}{A}{A setmns &set{x} in famF}}
+    &forallsub{X}{S}{&forallin{y|z}{S}{y notin sigma@X /\ y in sigma@{X cup &set{z}} => z in sigma@{X cup &set{y}}}}
+  ---- ---- ---- ----
+トークンの種類：
+    ORD
+    BIN
+    BINASSOC
+    UN
+    REL
+    OP
+    OPEN
+    CLOSE
+優先順位：
+01  指数 ^，添字 _ （前後空白なし有効）
+02  函数適用 @ （前後空白なし有効）
+03  連接
+04  times など
+05  + など

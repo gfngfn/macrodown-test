@@ -1,0 +1,1 @@
+let plus n m = n + m in plus 3 {hoge}

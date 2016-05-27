@@ -1,0 +1,6 @@
+\ifsame{foo}{foo}{%
+  \macro \hoge {C}%
+}{%
+  \macro \hoge {D}%
+}%
+\hoge;

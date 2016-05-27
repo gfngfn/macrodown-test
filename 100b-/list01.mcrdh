@@ -1,0 +1,10 @@
+let \print-list lst =
+  if is-empty lst then {} else
+    (list-head lst)
+    ^ ( if not (is-empty (list-tail lst)) then {/} else {} )
+    ^ {\print-list(list-tail lst);}
+in
+let list-length lst =
+  if is-empty lst then 0 else (1 + (list-length (list-tail lst)))
+in
+let sample-list = {hoge|piyo|fuga|moge} in finish

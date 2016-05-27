@@ -1,0 +1,29 @@
+\macro \escape @str @list-from @list-to {
+  \pop-char @char @rest {@str;}{
+    \exchange{@char;}{@list-from;}{@list-to;}%
+    \escape{@rest;}{@list-from;}{@list-to;}
+  }
+}%
+\macro \exchange @char @list-from @list-to {
+  \pop @head-from @tail-from {@list-from;}{
+    \pop @head-to @tail-to {@list-to;}{
+      \ifsame{@char;}{@head-from;}{
+        @head-to;
+      }{
+        \ifempty{@tail-from;}{
+          @char;
+        }{
+          \exchange{@char;}{@tail-from;}{@tail-to;}
+        }
+      }
+    }
+  }
+}%
+% ---- ---- ---- ----
+\escape```
+  <ul>
+    <li>hoge</li>
+    <li>piyo</li>
+    <li>fuga</li>
+  </ul>
+```{<|>|&}{&lt\;|&gt\;|&amp\;}

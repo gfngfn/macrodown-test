@@ -1,0 +1,25 @@
+    \math-dp-gather{
+      | \cfl{P}{
+          | \token-let; \token-ident; A B \token-defeq; P M \token-in; P
+          | \token-let; \token-cs; A B \token-defeq; P M \token-in; P
+          | \token-let; \token-var; \token-defeq; P \token-in; P
+          |*br*
+          | \token-if; P \token-then; P \token-else; P
+          | P \token-bin; P
+          | P P
+          | \token-ident;
+          | \token-int;
+          | \token-opnstr; S \token-clsstr;
+          | \token-opnqt; L \token-clsqt;
+          |}
+      | \cfl{S}{
+          | \token-char;
+          | \token-var; \token-end;
+          | \token-cs; \token-end;
+          | \token-cs; G H
+          |}
+      | \cfl{A}{| \epsilon; | \token-ident; A |}
+      | \cfl{B}{| \epsilon; | \token-var; B |}
+      | \cfl{G}{| \token-bgrp; L \token-egrp; |}
+      | \cfl{H}{| \epsilon; | G H |}
+      |}

@@ -1,0 +1,9 @@
+\macro-with-id \sec @sec {%
+  <h1>@sec;</h1>%
+}{%
+  <h1 id="@id;">@sec;</h1>%
+}%
+%
+%
+\sec {Normal Section}
+\sec #bd-gfngfn {Section with ID on HTML}

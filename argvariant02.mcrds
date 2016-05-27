@@ -1,0 +1,4 @@
+variant 'lt 'nt tree = Leaf of 'lt | Node of 'nt * 'lt 'nt tree * 'lt 'nt tree
+
+let f (Leaf x)         = x
+    | (Node (x, _, _)) = x

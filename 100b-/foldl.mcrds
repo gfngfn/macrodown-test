@@ -1,0 +1,7 @@
+let foldl f i lst =
+  if is-empty lst then i else
+    let hd = list-head lst in
+    let tl = list-tail lst in
+      f hd (foldl f i tl)
+in
+let ans = foldl (+) 0 [3; 1; 4; 1; 5; 9; 2] in arabic ans

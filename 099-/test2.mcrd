@@ -1,0 +1,3 @@
+let g f n = f (n ^ n) in
+let bd x = {bd_} ^ x in
+  g bd {gfn}

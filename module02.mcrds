@@ -1,0 +1,12 @@
+module Display = struct
+  private let punct-sub lst =
+    match lst with
+    | []           -> {}
+    | head :: []   -> head
+    | head :: tail -> head ^ {,\ } ^ (punct-sub tail)
+
+  public  let punct lst = {[} ^ (punct-sub lst) ^{]}
+end-struct
+
+in
+  Display.punct {|hoge|piyo|fuga|moge|}

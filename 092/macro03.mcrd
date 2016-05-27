@@ -1,0 +1,8 @@
+\macro \use-paren {%
+  \macro \surround @cnt {(@cnt;)}%
+}%
+\macro \use-bracket {%
+  \macro \surround @cnt {[@cnt;]}%
+}%
+\use-paren;\surround{hoge}
+\use-bracket;\surround{piyo}

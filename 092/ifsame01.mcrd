@@ -1,0 +1,3 @@
+\macro \bd {gfn}%
+\ifsame{\bd;}{gfn}{T}{F}
+\ifsame{bd}{gfn}{T}{F}

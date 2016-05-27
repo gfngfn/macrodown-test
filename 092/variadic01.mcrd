@@ -1,0 +1,29 @@
+\macro \enclose-each @left @right @list @middle {
+  \pop @head @tail {@list;}{
+    @left;@head;@right;%
+    \ifempty{@tail;}{}{
+      @middle;\enclose-each{@left;}{@right;}{@tail;}{@middle;}
+    }
+  }
+}%
+\macro \ul @list {
+  <ul>\deeper{
+    \enclose-each{<li>}{</li>}{@list;}{\break;}
+  }</ul>
+}%
+\macro \parens @list {
+  <p>\deeper{
+    \enclose-each{(}{)}{@list;}{,\ }
+  }</p>
+}%
+% ---- ---- ---- ----
+\ul{
+    hoge
+  | piyo
+  | fuga
+  | moge
+}
+\parens{
+    alpha | beta | gamma | delta
+  | epsilon | zeta | eta | theta
+}

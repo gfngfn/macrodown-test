@@ -1,0 +1,4 @@
+\print-list(sample-list);
+length: \arabic(list-length sample-list);
+\print-list{foo|bar|baz}
+length: \arabic(list-length {foo|bar|baz});

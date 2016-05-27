@@ -1,0 +1,19 @@
+  let foldl f i lst =
+    if is-empty lst then i else
+      foldl f (f i (list-head lst)) (list-tail lst)
+
+  let sum = foldl (+) 0
+  let \sum lst = arabic (sum lst)
+
+  let count m a = m + 1
+  let length = foldl count 0
+  let \length lst = arabic (length lst)
+
+  let enclose s t = {@s;[@t;]}
+  let \display = foldl enclose {}
+
+  in {
+    \sum    ( [3; 1; 4; 1; 5; 9; 2] );
+    \length ( [3; 1; 4; 1; 5; 9; 2] );
+    \display{|hoge|piyo|fuga|moge|}
+  }

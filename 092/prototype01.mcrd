@@ -1,0 +1,11 @@
+\macro \odd @lst {%
+  \pop @h @t {@lst;}{%
+    (@h;)\even{@t;}%
+  }%
+}%
+\macro \even @lst {%
+  \pop @h @t {@lst;}{%
+    [@h;]\odd{@t;}%
+  }%
+}%
+\odd{alpha|beta|gamma|delta|epsilon|zeta}

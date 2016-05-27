@@ -1,0 +1,10 @@
+
+variant tree = Node of int * tree * tree | Leaf of int
+
+let print-tree tr =
+  match tr with
+  | Node(i, s, t) -> {(} ^ (arabic i) ^ {\ ->\ } ^ (print-tree s) ^ {\ } ^ (print-tree t) ^ {)}
+  | Leaf(i)       -> arabic i
+
+
+in print-tree (Node(1, Node(2, Leaf(3), Leaf(4)), Leaf(5)))

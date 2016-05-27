@@ -1,0 +1,26 @@
+let concat1 lst =
+  if is-empty lst then {/} else
+    let hd = list-head lst in
+    let tl = list-tail lst in
+      {/} ^ hd ^ (concat1 tl)
+
+let-mutable mutlst <- []
+let-mutable result <- {}
+let concat2 lst =
+(
+  mutlst <- lst
+  before result <- {}
+  before
+  ( while not (is-empty (!mutlst)) do
+    ( let hd = list-head (!mutlst) in
+      let tl = list-tail (!mutlst) in
+     ( result <- (!result) ^ {/} ^ hd
+        before mutlst <- tl
+      )
+    )
+  ) before (!result) ^ {/}
+)
+in
+  (concat1 {|Karush|Kuhn|Tucker|})
+%  ^ {\break;}
+%  ^ (concat2 {|Karush|Kuhn|Tucker|})

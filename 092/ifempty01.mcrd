@@ -1,0 +1,6 @@
+\ifempty{}{%
+  \macro \hoge {C}%
+}{%
+  \macro \hoge {D}%
+}%
+\hoge;

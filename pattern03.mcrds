@@ -1,0 +1,14 @@
+let test s i =
+  if i >= string-length s then {} else
+    let ch =
+      match string-sub s i 1 with
+      | `a`     -> `A`
+      | `e`     -> `E`
+      | `i`     -> `I`
+      | `o`     -> `O`
+      | `u`     -> `U`
+      | other   -> other
+    in
+      ch ^ (test s (i + 1))
+
+in test `the quick brown fox jumps over the lazy dog` 0

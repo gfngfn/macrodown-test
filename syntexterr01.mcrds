@@ -1,0 +1,5 @@
+let f x 0 = x
+    | y 1 = y
+    | z () = z
+
+in f 1 0

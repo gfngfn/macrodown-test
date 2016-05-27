@@ -1,0 +1,11 @@
+
+variant hoge = Foo of int | Bar of bool
+
+let bool2str b = if b then {true} else {false}
+
+let display x =
+  match x with
+  | Foo i -> arabic i
+  | Bar b -> bool2str b
+
+in (display (Foo 3)) ^ {/} ^ (display (Bar false))

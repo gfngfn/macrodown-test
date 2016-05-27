@@ -1,0 +1,10 @@
+  \section{Lightweight Listing System in Macrodown}{
+    \itemize{
+      * Tokyo
+        ** Hongo
+        ** Yayoi
+        ** Komaba
+      * Chiba
+        ** Kashiwa
+    }
+  }

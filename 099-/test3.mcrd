@@ -1,0 +1,5 @@
+let \test @x @y = {Ma@x;r@y;down} in
+let \test1 @x = {bd_@x;@x;} in
+let \test2 x = {bd_} ^ x ^ x in
+  {Hello, \test{c}{o} and \test{}{k}.\break;} ^
+  {\test1{gfn}, \test2{gfn}}

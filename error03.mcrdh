@@ -1,0 +1,4 @@
+let \foo n x = {
+  hoge piyo fuga moge @x;
+} in
+  )

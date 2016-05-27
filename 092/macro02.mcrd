@@ -1,0 +1,11 @@
+\macro \def-trsps @option {%
+  \ifsame{@option;}{top}{%
+    [T]\macro \trsps @mat {@mat;^\{\\top\}}%
+  }{%
+    [F]\macro \trsps @mat {@mat;^\{\\mathrm\{T\}\}}%
+  }%
+}%
+\def-trsps{hoge}%
+\trsps{A}
+\def-trsps{top}%
+\trsps{B}

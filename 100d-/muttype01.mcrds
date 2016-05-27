@@ -1,0 +1,23 @@
+variant 'a tree = Node of 'a node | Leaf of 'a leaf
+  and   'a node = 'a * 'a tree * 'a tree
+  and   'a leaf = 'a
+
+let show-tree f tr =
+  match tr with
+  | Leaf(x)       -> f x
+  | Node(x, l, r) ->
+      let ls = show-tree f l in
+      let rs = show-tree f r in
+      let cs = f x in
+        {(@ls; @cs; @rs;)}
+
+let make-tree-of-list x lst =
+  match lst with
+  | []       -> Leaf(x)
+  | hd :: tl -> Node(hd, Leaf(x), make-tree-of-list x tl)
+
+let sample = Node(`a`, Node(`d`, Leaf `b`, Leaf `c`), Leaf `e`)
+let id s = s
+
+in (show-tree id sample) ^ break ^ (show-tree arabic (make-tree-of-list 0 [3; 1; 4; 1; 5; 9; 2]))
+

@@ -1,0 +1,22 @@
+mutual
+  let car = list-head
+  let cdr = list-tail
+
+  let \f = f
+
+  let f lst =
+    if is-empty lst then {*} else
+      {(} ^ (car lst) ^ {)} ^ g (cdr lst)
+
+  let \g = g
+
+  let g lst =
+    if is-empty lst then {+} else
+      {[} ^ (car lst) ^ {]} ^ f (cdr lst)
+
+end-mutual
+
+in {
+  \f{|hoge|piyo|foo|bar|}
+  \f{|foo|bar|baz|}
+}

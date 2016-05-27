@@ -1,0 +1,15 @@
+let car = list-head in
+let cdr = list-tail in
+let f lst =
+  let hd = car lst in
+  let tl = cdr lst in
+    {(} ^ hd ^ {)} ^
+    (if is-empty tl then {+} else g tl)
+and g lst =
+  let hd = car lst in
+  let tl = cdr lst in
+    {[} ^ hd ^ {]} ^
+    (if is-empty tl then {*} else f tl)
+in
+let \f = f in
+let \g = g in finish

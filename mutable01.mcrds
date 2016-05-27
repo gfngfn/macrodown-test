@@ -1,0 +1,4 @@
+let-mutable mutx <- 1 in
+  (arabic (!mutx)) ^ {/}
+  ^ ( mutx <- 2 before mutx <- 3 before (arabic (!mutx)) ^ {/} )
+  ^ (arabic (!mutx + 10))

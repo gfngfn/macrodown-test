@@ -1,0 +1,14 @@
+\section #first {はじめに}{
+  あー
+}
+\section{間にある節}{
+  いー
+}
+\section{引用のテスト}{
+  うー
+  第\ref{first}節に戻る
+  第\ref{latter}節は引用できない
+}
+\section #latter {後ろの節}{
+  えー
+}

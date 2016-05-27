@@ -1,0 +1,6 @@
+module Hoge = struct
+  private let at = `@`
+  direct  let \at-id s = at ^ s
+end-struct
+in
+  {\at-id{bd_gfngfn}}

@@ -1,0 +1,5 @@
+          let enclose1 x = {[@x;]}
+          let enclose2 x = {<@x;>}
+          in
+            (enclose1 (!! {key1})) ^ break ^
+              (new-global-hash {key1} <<- {CONTENT} before {<} ^ (!! {key1}) ^ {>} )

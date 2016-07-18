@@ -1,0 +1,11 @@
+\table(
+  [ {|the|quick|brown|};
+    {|fox|jumps|over |};
+    {|the|lazy |dog  |} ]
+);
+
+\tbody{
+| \tr{|foo|bar|baz|}
+| \tr{|fuga|hoge|<|}
+| \tr{|^|fizz|buzz|}
+|}

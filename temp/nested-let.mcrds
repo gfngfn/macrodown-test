@@ -1,0 +1,5 @@
+let f x =
+  let g y = x in
+    (g true) + 1
+in
+  (f {s})

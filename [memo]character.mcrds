@@ -1,0 +1,33 @@
+
+let-mutable ref-title  <- {}
+let-mutable ref-author <- {}
+
+let @title title =
+  ref-title <- title before {}
+
+let @author author =
+  ref-author <- author before {}
+
+let @maketitle =
+  let title  = ! ref-title in
+  let author = ! ref-author in
+    {
+      <div class="title">$title;</div>
+      <div class="author">$author;</div>
+    }
+
+in {
+  @document{
+    @settings;
+    @title{Sketch for Another Way of Character Definition}
+    @author{@atmark;bd_gfngfn}
+  }{
+    @maketitle;
+
+    @h1{Sample Section}{
+      @p{
+        The quick brown fox jumps over the lazy dog.
+      }
+    }
+  }
+}

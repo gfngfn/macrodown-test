@@ -1,0 +1,37 @@
+    let string-of-row row =
+      match row with
+      | []           -> {}
+      | head :: tail -> let tail-str = string-of-row tail in
+                          {<td>@head;</td>@tail-str;}
+
+    let table-sub rowlst =
+      match rowlst with
+      | []          -> {}
+      | row :: rest -> let row-str = string-of-row row in
+                       let rest-str = table-sub rest in
+                         {
+                           <tr>\deeper{
+                             @row-str;
+                           }</tr>
+                           @rest-str;
+                         }
+
+    let \table rowlst =
+      let content = table-sub rowlst in {<table>\deeper{@content;}</table>}
+
+
+    let tbody rowlst =
+      match rowlst with
+      | []          -> {}
+      | row :: tail -> let tail-str = tbody tail in { @row;
+                                                      @tail-str; }
+
+    let \tbody content = let res = tbody content in {<table>\deeper{@res;}</table>}
+
+    let tr tdlst =
+      match tdlst with
+      | []         -> {}
+      | td :: tail -> let tail-str = tr tail in { <td>@td;</td>
+                                                  @tail-str;}
+
+    let \tr content = let res = tr content in {<tr>\deeper{@res;}</tr>}

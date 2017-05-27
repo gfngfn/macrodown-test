@@ -1,0 +1,33 @@
+module Doc
+: sig
+    type author
+    val author-of-string : string -> author
+    direct \document : author -> string -> string -> string
+    direct \p : string -> string
+    val \dummy : string
+  end
+= struct
+    type author = string
+    let author-of-string s = s
+    let \document author title body =
+      {
+        <!DOCTYPE html>
+        <html>\deeper{
+          <meta name="author" content="@author;">
+          <meta name="generator" content="Macrodown 1.00e">
+          <title>@title;</title>
+        }</html>
+        <body>\deeper{@body;}</body>
+      }
+    let \p content = {<p>\deeper{@content;}</p>}
+    let \dummy = {DUMMY}
+  end
+in
+{
+  \document(Doc.author-of-string `gfn`){Test}{
+    \p{
+      My quiz above the kiwi juice needs priceless fixing.
+      \Doc.dummy;
+    }
+  }
+}

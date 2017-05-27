@@ -1,0 +1,3 @@
+let f []         = 0
+    | (hd :: tl) = hd
+in f

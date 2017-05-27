@@ -1,0 +1,7 @@
+let \hello name = {Hello, @name;}
+let \repeat n s =
+  if n <= 0 then {}
+            else {@s;\repeat(n - 1){@s;}}
+in
+%  {\hello{Macrodown}! \repeat(3){hoge}}
+  {\hello{Macrodown}! \repeat{hoge}}

@@ -1,0 +1,13 @@
+module M
+: sig
+    type t
+    val x : t
+  end
+= struct
+    type t = int
+    let x = 1
+  end
+
+let p = (M.x == 0) in
+
+  if p then {Y} else {N}

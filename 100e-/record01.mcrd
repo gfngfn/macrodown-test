@@ -1,0 +1,12 @@
+\document(|
+  html-lang   = `ja`;
+  latex-class = ([`a4paper`; `dvipdfmx`], `jsarticle`);
+  title       = `First Practical Test of Records`;
+  author      = `gfn`;
+|){
+  \section #sect {Sample Section}{
+    \p{
+      My quiz above the kiwi juice needs priceless fixing.
+    }
+  }
+}

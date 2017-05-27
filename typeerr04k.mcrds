@@ -1,0 +1,5 @@
+type hoge = string * int
+type piyo = hoge * bool
+type fuga = Piyo of piyo | Int of int
+
+let x = Piyo (1, true) in x

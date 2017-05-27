@@ -1,0 +1,29 @@
+module Counter
+: sig
+    type t
+    val init : unit -> t
+    val count : t -> unit
+    val show : t -> string
+  end
+= struct
+
+    type t = int ref
+
+    let init () =
+      let-mutable r <- 0 in
+        r
+
+    let count r =
+      ( r <- !r + 1 )
+    
+    let show r = (!r)   % <== should be 'arabic (!r)'
+
+  end
+
+in
+let c = Counter.init () in
+let () = Counter.count c in
+let x = Counter.show c in
+let () = Counter.count c in
+let y = Counter.show c in
+  {@x;, @y;} % ==> "1, 2"

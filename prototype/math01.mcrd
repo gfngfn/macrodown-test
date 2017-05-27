@@ -1,0 +1,44 @@
+% -*- coding: utf-8 -*-
+
+# 主な問題点
+
+  * 積と函数適用の区別をどうするか，あるいはそもそも必要か
+    ** ${E = m c^2}
+    ** 分数を `/` で書く案 ${F = G {M m / r^2}}
+  * コマンドをどう書いて定義するのか
+  * 本文中の数式埋め込みとコマンド定義式中の数式埋め込みは違うものだが，明示的にどの程度区別してやるべきなのか
+
+
+# 一般
+
+  Γ ⊢ M : τ
+
+  ## すべて接頭辞なしで指定子にする
+
+      let $ tyenvG = {$Gamma;}
+      let $ tmM = term-syntax `M`
+      let $ tytau = type-syntax (cs-0 `tau`)
+      let $ deriv tenv tm ty = {$tenv;\\mathrel\{\\vdash\}$tm;\\mathrel\{:\}$ty;}
+      ...
+      ${deriv tyenvG tmM tytau}
+
+
+  ## 引数のあるものだけ制御綴として指定子にする
+
+      let-math tyenvG = ${Gamma}
+      let-math tmM = term-syntax `M`
+      let-math tytau = ${type-syntax tau}
+      let \deriv tenv tm ty = {@tenv;\\mathrel\{\\vdash\}@tm;\\mathrel\{:\}@ty;}
+      ...
+      ${\deriv{tyenvG}{tmM}{tytau}}
+
+
+  ## すべて特定の記号を接頭辞にする
+
+    * `${:deriv :tyenvG :tmM :tytau}`
+
+  ## ほぼ本文と同じ方式
+
+    `${\deriv{\tyenvG;}{\tmM;}{\tytau;}}`
+    => セミコロンが打ちにくく視覚的にもうるさい
+

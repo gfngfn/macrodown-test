@@ -1,0 +1,17 @@
+module M
+: sig
+    type t
+    val init : t
+    val get : t -> int
+  end
+= struct
+    type t = int ref
+    let init =
+      let-mutable r <- 0 in r
+    let get r = !r
+    let dummy r = !r
+  end
+
+let y = M.init in
+let z = M.get y in % let z = M.dummy y in
+  arabic z

@@ -1,0 +1,8 @@
+type hoge = A | B
+
+let f x = match x with A -> 0 | B -> 1
+
+type hoge = X | Y
+
+let y = f (X) in
+  arabic y

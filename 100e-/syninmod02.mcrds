@@ -1,0 +1,11 @@
+module Hash = struct
+  publ type 'k 'v t = ('k * 'v) list
+
+  publ let empty : 'k 'v t = []
+
+  publ let add : 'k 'v t -> 'k -> 'v -> 'k 'v t
+             | hs key value = (key, value) :: hs
+
+end-struct
+
+in Hash.add Hash.empty 1

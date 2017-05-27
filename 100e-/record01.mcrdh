@@ -1,0 +1,36 @@
+let-mutable title <- {}
+
+let \document head body =
+  let lang   = head#html-lang in
+  let title  = head#title in
+  let author = head#author in
+  {
+    <!DOCTYPE html>
+    <html lang="@lang;">\deeper{
+      <head>\deeper{
+        <title>@title;</title>
+      }</head>
+      <body>\deeper{
+        @body;
+      }</body>
+    }</html>
+  }
+
+let \section head body =
+  let attr-id =
+    match id-name with
+    | Nothing -> {}
+    | Just(s) -> {\ id="@s;"}
+  in
+  {
+    <h1@attr-id;>@head;</h1>\deeper{
+      @body;
+    }
+  }
+
+let \p inner =
+  {
+    <p>\deeper{
+      @inner;
+    }</p>
+  }

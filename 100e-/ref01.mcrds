@@ -1,0 +1,9 @@
+let-mutable counter <- 0
+
+let get () =
+    counter <- !counter + 1
+  before
+    ( let s = arabic (!counter) in {[@s;]} )
+in
+%  get {a} ^ get {b} ^ get {c}
+  get () ^ get () ^ get ()

@@ -1,0 +1,38 @@
+          let \p1 cont = {
+            <p>@cont;</p>
+          }
+          let \p2 cont = {
+            <p>
+              @cont;
+            </p>
+          }
+          let \p3 cont = {
+            <p>\deeper{@cont;}</p>
+          }
+          let \p4 cont = {
+            <p>\deeper{
+              @cont;
+            }</p>
+          }
+          let \p5 cont = {
+            <p>
+              \deeper{@cont;}
+            </p>
+          }
+          in {
+            [\p1{
+              The quick brown fox jumps over the lazy dog.
+            }]
+            \p2{
+              The quick brown fox jumps over the lazy dog.
+            }
+            \p3{
+              The quick brown fox jumps over the lazy dog.
+            }
+            \p4{
+              The quick brown fox jumps over the lazy dog.
+            }
+            \p5{
+              The quick brown fox jumps over the lazy dog.
+            }
+          }

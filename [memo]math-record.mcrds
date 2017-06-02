@@ -1,0 +1,31 @@
+% -*- coding: utf-8 -*-
+
+let math-arg-gen condition criterion parenf arg =
+  if arg#assoc >= criterion && condition then parenf arg#src else arg#src
+
+let math-arg = math-arg-gen true
+
+let-math (/) numer denom = (|
+  assoc= 0;
+  str= latex-cs-2 `frac` numer#str denom#str;
+|)
+
+let-math (@) (func optional need-apply-paren= false) oprd =
+  let s-func = math-arg 1 latex-math-paren func in
+  let s-oprd = math-arg-gen func#need-apply-paren 1 latex-math-paren oprd in
+    (|
+      assoc= 1;
+      str= s-func ^ {\ } ^ s-oprd;
+    |)
+
+in {
+  The quick brown fox jumps over the lazy dog.
+  We have ${F = G {M m / R^2}} where $G is the constant of gravitation.
+  ${
+    F : (f : X -> Y) |-> (F@f : F@X -> F@Y)
+  |
+    F@id_X = id_{F@X}
+  |
+    (F@f) . (F@g) = F@(f . g)
+  }
+}
